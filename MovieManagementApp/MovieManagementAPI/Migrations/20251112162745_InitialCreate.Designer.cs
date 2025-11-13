@@ -25,7 +25,7 @@ namespace MovieManagementAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("PostManagementAPI.Models.Post", b =>
+            modelBuilder.Entity("MovieManagementAPI.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,16 +36,18 @@ namespace MovieManagementAPI.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("character varying(2000)");
+                    b.Property<string>("Genre")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("PosterUrl")
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
-                    b.Property<string>("Name")
+                    b.Property<int?>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
@@ -55,9 +57,9 @@ namespace MovieManagementAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name");
+                    b.HasIndex("Title");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Movies");
                 });
 #pragma warning restore 612, 618
         }
