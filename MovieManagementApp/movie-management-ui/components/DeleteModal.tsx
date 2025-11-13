@@ -1,12 +1,12 @@
 'use client'
 
 interface DeleteModalProps {
-  postName: string
+  movieTitle: string
   onConfirm: () => void
   onCancel: () => void
 }
 
-export default function DeleteModal({ postName, onConfirm, onCancel }: DeleteModalProps) {
+export default function DeleteModal({ movieTitle, onConfirm, onCancel }: DeleteModalProps) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl border-2 border-red-200">
@@ -14,10 +14,10 @@ export default function DeleteModal({ postName, onConfirm, onCancel }: DeleteMod
           <div className="text-6xl mb-4">⚠️</div>
           <h3 className="text-2xl font-bold mb-3 text-gray-900">Confirm Delete</h3>
           <p className="text-gray-800 text-lg font-medium">
-            Are you sure you want to delete:
+            Are you sure you want to delete this movie:
           </p>
           <p className="text-blue-600 text-xl font-bold mt-2">
-            &quot;{postName}&quot;?
+            &quot;{movieTitle}&quot;?
           </p>
         </div>
         <div className="flex gap-4">

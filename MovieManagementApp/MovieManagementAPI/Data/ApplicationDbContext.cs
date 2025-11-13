@@ -10,14 +10,17 @@ namespace PostManagementAPI.Data
         {
         }
 
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Post>()
-                .HasIndex(p => p.Name);
+            modelBuilder.Entity<Movie>()
+                .HasIndex(m => m.Title);
+            
+            modelBuilder.Entity<Movie>()
+                .HasIndex(m => m.Genre);
         }
     }
 }
