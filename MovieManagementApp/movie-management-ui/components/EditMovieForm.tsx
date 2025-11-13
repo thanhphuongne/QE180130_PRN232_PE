@@ -15,7 +15,7 @@ export default function EditMovieForm({ movieId }: EditMovieFormProps) {
     rating: undefined,
     posterUrl: ''
   })
-  const [errors, setErrors] = useState<Partial<UpdateMovieDto>>({})
+  const [errors, setErrors] = useState<Partial<Record<keyof UpdateMovieDto, string>>>({})
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const router = useRouter()

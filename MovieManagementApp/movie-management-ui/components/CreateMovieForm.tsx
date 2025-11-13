@@ -11,7 +11,7 @@ export default function CreateMovieForm() {
     rating: undefined,
     posterUrl: ''
   })
-  const [errors, setErrors] = useState<Partial<CreateMovieDto>>({})
+  const [errors, setErrors] = useState<Partial<Record<keyof CreateMovieDto, string>>>({})
   const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
 
