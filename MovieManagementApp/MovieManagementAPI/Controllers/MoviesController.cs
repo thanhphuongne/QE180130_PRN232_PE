@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PostManagementAPI.Data;
-using PostManagementAPI.DTOs;
-using PostManagementAPI.Models;
+using MovieManagementAPI.Data;
+using MovieManagementAPI.DTOs;
+using MovieManagementAPI.Models;
 
-namespace PostManagementAPI.Controllers
+namespace MovieManagementAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

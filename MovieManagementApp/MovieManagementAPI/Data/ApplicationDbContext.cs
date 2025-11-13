@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using PostManagementAPI.Models;
+using MovieManagementAPI.Models;
 
-namespace PostManagementAPI.Data
+namespace MovieManagementAPI.Data
 {
     public class ApplicationDbContext : DbContext
     {

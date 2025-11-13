@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PostManagementAPI.Models
+namespace MovieManagementAPI.Models
 {
     public class Movie
     {
