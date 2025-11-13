@@ -54,6 +54,8 @@ namespace MovieManagementAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Genre");
+
                     b.HasIndex("Title");
 
                     b.ToTable("Movies");
