@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 import { movieService, UpdateMovieDto } from '@/lib/api'
 
 interface EditMovieFormProps {
@@ -36,7 +37,7 @@ export default function EditMovieForm({ movieId }: EditMovieFormProps) {
       })
     } catch (error) {
       console.error('Error fetching movie:', error)
-      alert('Failed to fetch movie. Redirecting to home page.')
+      toast.error('Failed to fetch movie. Redirecting to home page.')
       router.push('/')
     } finally {
       setLoading(false)
@@ -82,10 +83,11 @@ export default function EditMovieForm({ movieId }: EditMovieFormProps) {
         posterUrl: formData.posterUrl?.trim() || undefined
       }
       await movieService.updateMovie(movieId, dataToSubmit)
+      toast.success('✨ Movie updated successfully!')
       router.push('/')
     } catch (error) {
       console.error('Error updating movie:', error)
-      alert('Failed to update movie. Please try again.')
+      toast.error('Failed to update movie. Please try again.')
     } finally {
       setSubmitting(false)
     }

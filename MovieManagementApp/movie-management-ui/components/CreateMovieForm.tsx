@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 import { movieService, CreateMovieDto } from '@/lib/api'
 
 export default function CreateMovieForm() {
@@ -54,10 +55,11 @@ export default function CreateMovieForm() {
         posterUrl: formData.posterUrl?.trim() || undefined
       }
       await movieService.createMovie(dataToSubmit)
+      toast.success('🎬 Movie created successfully!')
       router.push('/')
     } catch (error) {
       console.error('Error creating movie:', error)
-      alert('Failed to create movie. Please try again.')
+      toast.error('Failed to create movie. Please try again.')
     } finally {
       setSubmitting(false)
     }

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 import { movieService, Movie } from '@/lib/api'
 import DeleteModal from './DeleteModal'
 
@@ -52,7 +53,7 @@ export default function MovieList() {
       setMovies(data)
     } catch (error) {
       console.error('Error fetching movies:', error)
-      alert('Failed to fetch movies. Please try again.')
+      toast.error('Failed to fetch movies. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -73,11 +74,17 @@ export default function MovieList() {
     try {
       await movieService.deleteMovie(movieToDelete.id)
       setMovies(movies.filter(m => m.id !== movieToDelete.id))
+      toast.success('🗑️ Movie deleted successfully!', {
+        style: {
+          background: '#fff',
+          color: '#363636',
+        },
+      })
       setDeleteModalOpen(false)
       setMovieToDelete(null)
     } catch (error) {
       console.error('Error deleting movie:', error)
-      alert('Failed to delete movie. Please try again.')
+      toast.error('Failed to delete movie. Please try again.')
     }
   }
 
