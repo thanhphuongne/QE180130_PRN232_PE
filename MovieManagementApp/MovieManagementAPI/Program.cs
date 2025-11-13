@@ -56,15 +56,20 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 // Configure CORS
+var corsOrigins = Environment.GetEnvironmentVariable("CORS_ORIGINS")
+    ?? "https://qe-180130-prn-232-pe.vercel.app,http://localhost:3000";
+var allowedOrigins = corsOrigins.Split(',', StringSplitOptions.RemoveEmptyEntries)
+    .Select(o => o.Trim())
+    .ToArray();
+
+Console.WriteLine($"CORS allowed origins: {string.Join(", ", allowedOrigins)}");
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
         builder =>
         {
-            builder.WithOrigins(
-                       "https://qe-180130-prn-232-pe.vercel.app",
-                       "http://localhost:3000"
-                   )
+            builder.WithOrigins(allowedOrigins)
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });
